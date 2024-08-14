@@ -1,0 +1,792 @@
+ what is linux? ===> linux is a kernel. which manage all software files of operating system. in linux virus not attack easyly in the case of virus attack the virus cant spread in other software wile it stay in the same file only. and by simply deleting that file we can remove virus also thats why linux is more popular in industry than windows os.
+ 
+ 
+ what is os ? ====>  os is a combination of software + kernel = operating system.
+ 
+ how many fleour in linux ? ====> RHEL,kali,ubuntu,centos,debian,fedora & others.
+ 
+ linux & windows both are CLI & GUI based. 
+                         
+ what is linux?  ====>  software (GNU) + Linux kernel = Liniux operating system.                   
+                           
+  Linux Feature/Advantages
+  
+  
+Open source
+secure
+light weight
+multiuser - multitask  
+
+
+when the user will login to the system by admin so you will directly login to /root directory but in user case they will enter in /home.
+/etc  ====> all configuration file.
+/usr  =====> by default software in stalled in this directory.
+/bin  =====> it contain command by all user & root user can perform.
+/sbin =====> it contain command by root user can perform only.                     
+
+
+                           
+how many way for create file ?
+
+cat - single file creation.
+touch - multiple file creation.
+vi/vim - single file create and editing tool.(new)
+nano -  single file create and editing tool.(old)                        
+                           
+
+
+                                                                    cat/tac
+                                                                    
+cat file1 file2 file3 > newfile4                                                     ==========> Add more than one file in to single file (con-catenate).
+cat newfile4                                                                         ==========> Displya the containt of file.
+cat > file                                                                           ==========> it will create new file. we can add or overwrite containt into the file. ctl+d for save & exit.
+cat >> file                                                                          ==========> add new containt in the same file.
+tac newfile4                                                                         ==========> Displya the containt of file in revese order.                                      
+                           
+                        
+                                                   
+                                         touch
+
+
+stat (file name)
+touch -a (file name)                                                                     ======> file access time updates
+touch -m (file name)                                                                     ======> file modefid time updates
+touch -am (file name)                                                                    ======> file time updates
+touch -h (file name)                                                                     ======> link file time updates
+touch -r (file name) (reference file name)                                               ======> for file time updates same with reference file
+touch -t 202212061223.30 (file name)                                                     ======> custome time updates(yymmddH:M:s)
+touch -d 'Tuesday 06 December 2022 12:34:25 PM IST' (file name)                          ======> custome time updates(human redable format)
+touch -a -c (file name)                                                                  ======> file access time updates if it will available , else will not create new file.
+touch  /home/10354@creditvidya.local/kapil/kapil/kkkk
+
+
+
+                                        mkdir ,cp , mv , tail , head, less, more, cd & wc 
+                                                     
+mkdir kapil{a..z}ssh
+mkdir kapil{1..5}
+mkdir -p kalindi/{1..5}
+mkdir  /home/10354@creditvidya.local/kapil/kapil/kkkk
+mkdir -p 1/2/3/4/5
+mkdir 'kapil patil'
+mkdir kapil nikhil umesh
+cd 'kapil patil'
+df -h
+wc -w script.sh
+wc -c script.sh
+wc -l script.sh                                                                         ======> w-words, c-charecters, l-lines
+cd ../../..                                                                             ======> 3 steps back
+mv                                                                                      ======> move data or rename file.
+mkdir .kapil                                                                            ======> "." use for create hide folder or hide file. 
+
+
+
+                                      history                                      
+                                      
+history -a                                                                              ======> append history
+bash                                                                                    ======> for refresh terminal
+export PROMPT_COMMAND='history -a'                                                      ======> save this instruction in .bashrc file, it will automatically update history in .bash_history file.
+
+
+
+                                      awk
+                                     
+                                     
+awk option pattern action sourcefilename
+ ls -l | awk '{print $1}'                                                           =====> print 1 feild
+ ls -l | awk '{print $1,$2,$6}'                                                     =====> print 1,2 & 3 feild
+ ls -l | awk '/^d/ {print $0}' | nl                                                 =====> find the data files line start from d alphabet
+ ls -l /* | awk '/^-/ {print $0}' | nl                                              =====> find the data files line start from - alphabet
+ls -l /* | awk '$2 ~ /^1$/ {print $0}' | nl                                         =====> find link is 1 data
+ls -l /* | awk '$7 ~ /Dec/ {print $0}' | nl                                         =====> find dec month data 
+ls -l | awk '$6 > 42 {print $0}' | nl                                               =====> find size greater than 42 kb data
+ ls -l | awk '$2 == 2 && $6 > 42 {print $0}' | nl                                   =====> match both condition
+ ls -l | awk '$2 == 2 || $6 > 42 {print $0}' | nl                                   =====> match one of the condition
+ ls -l | awk '{print $0, NF}' | nl                                                  =====> to know the number of feild
+ ls -l | awk 'NR == 5, NR == 10 {print NR ,$0, NF}'                                 =====> data from 5 - 10 lines only
+ ls -l | awk '$1 ~ /rwx------/ {print $0}'                                          =====> find the data files permission start from rwx------
+ ls -l | awk 'BEGIN {count=0;} {if ($7 == "Dec") count +=1} END {print count}'      =====> find the total count of required daata
+ awk '{print $1,$2}' OFS=' ' sourcefile                                             =====> arrange data in systematic form
+awk '{print $0}' sourcefile | column -t                                             =====> arrange data in systematic form
+awk '{if ($3 == 1000) print $0}' kkkkkkk | column -t                                =====> display data match with 1000
+awk '{if ($3 == 10001) print $0;else print $0}' kkkkkkk | column -t                 =====> display all data if we didn get matchiong with 1000
+awk -F':' '{print $1,$2,$3}' /etc/passwd | column -t                                =====> delimeter mention in the file delimeter used as a ":"  
+awk '{for (i=0;i<=10;i++) print $0}' kkkkkkk                                        =====> desplay no of repeated output mention in the for loop condition. 
+./script.sh                                                                         =====> example of script go and see
+touch kkkkap2 ; mkdir dhanu ; ls -l                                                 =====> run multiple command in same time
+ifconfig | head -2 | tail -1 | awk '{print                          
+
+
+
+
+
+
+                                       vi/vim
+escape mode:
+            x    =====> remove selected alphabet
+            4x    =====> remove 4 alphabet after selected alphabet
+            dw   ======>   remove selected word
+            dd   ======> remove selected line   
+            5dd   ======> remove 5 line below selected
+            shift + g ====> cursor move to bottom line
+            gg ====> cursor move to top line
+            ctrl +r =====> redo
+            u     =======> undo
+            shift+zz ====> come out from file
+            
+            
+insert mode:
+            i,a  =====> enter in insert mode
+            o  =====> enter in insert mode + create blank line in below cursor line
+            shift + o =====> enter in insert mode + create blank line in above cursor line
+            :se nu     ======> create line number
+            :se nonu   ======> remove line number
+            :15        ======> jump on line number 15
+            :!         ======> you can fire terminal command
+command mode:
+            :! touch india =====> create india directoty on terminal
+            :! ls -al =====> create list on terminal
+            
+            
+                      
+                                             cut (it will work when data of file placed in equal space(issue resolve by using awk))
+                                             
+                                             
+cut -c1-5,10-15 kkkkkkk         
+cut -c1,2,3,4,5 kkkkkkk                       =======> display data from colonm 1,2,3,4,5                                                                                   
+cut -c6-15 kkkkkkk                            =======> display data from colonm 6-15
+cut -d: -f1 test.txt                          =======> delimeter set based on colum seperation 
+cut -d' ' -f1,2,3 test.txt                    =======> delimeter set based on space seperation
+
+
+
+                                               passwd
+
+passwd -d username                     
+passwd -l username
+passwd -u username
+passwd -e username
+passwd -x username
+passwd -w username
+echo (user name) | passwd --stdin (new password)
+passwd -S username
+date -s "mention date details"
+
+
+
+
+
+                                                    sed 
+
+
+sed -n 'p'  (filename) | nl                                     
+sed -n '1p'  (filename) | nl 
+sed -n ''1p;2p;3p''  (filename) | nl 
+sed -n '1,10p'  (filename) | cat -n
+cat -n (file name) |  sed -n '1,10p'
+cat -n (file name) |  sed -n '1,10p;20,30p;50,60p'
+cat -n (file name) | sed -n '1~5p'
+cat -n credentiol2 | sed -n '/kpatil/p'
+cat -n credentiol2 | sed -n '/kpatil/p;/GRAYLOG/p;/'
+sed -n '/^kpatil/p' credentiol2 | cat -n
+sed -n '/^[kFG]/p' credentiol2 | cat -n
+sed -n '/^[a-l]/p' credentiol2 | cat -n
+sed -n '15,+5p' credentiol2 | nl
+sed -n '/[[:upper:]]/p' credentiol2
+sed -n '/[[:lower:]]/p' credentiol2
+sed -n '/[[:space:]]/p' credentiol2
+sed -n '/[[:digit:]]/p' credentiol2
+sed -n 'l' credentiol2
+sed '/kpatil/ e date' credentiol2
+sed 's/kpatil/kapildeo/g' credentiol2
+sed 's/kpatil/kapildeo/' credentiol2
+sed '49s/Kapildeo/kpatil/ig' credentiol2 | nl
+sed '1r kkkkkkk' credentiol2
+sed -i.backup 's/FORTICLIENT/kapildeo/g' credentiol2
+sed -i 's/^/#/' credentiol2
+sed -i 's/^$//d' credentiol2
+
+
+
+
+
+                                                 LOGICAL VOLUME MANAGEMENT (lvm)
+                                                 
+                                                 
+mkdir /kapil
+vim /etc/fstab
+vi /etc/yum.repo.d/yum.repo
+yum repolist
+yum mackcache                                               
+df -h                                             
+
+
+                                                 FOR RESTORE DATA
+
+
+yum makechache
+yum repolist
+rmpquery lvm2                                                              ========> check lvm package.
+lvdisplay , pvdisplay & vgdisplay                                          ========> all command are  used for listing detalis about this.                                              
+lvs , pvs & vgs                                                            ========> all command are  used for listing
+lsblk                                                                      ========> check hard drive
+pvcreate /dev/sdb                                                          ========> phisically volume "/dev/sdb" create
+vgcreate myvg /dev/sdb                                                     ========> volume group "myvg" create
+vgcreate -l 2 myvg /dev/sdb                                                ========> we can create only 2 lv
+vgchange -l 5 myvg                                                         ========> you can extend up to 5 lv by using this command.
+vgchange -p 2 myvg                                                         ========> you can set limit of physical volume.
+fdisk /dev/sdb                                                             ========> making partition
+
+lvcreate -L 1G -n lv1 myvg                                                 ========> logical volume "lv1" create
+mkfs.ext4  /dev/myvg/lv1                                                   ========> format logical volume "lv1"
+mkdir kapil                                                                ========> create directory "kapil"
+mount /dev/myvg/lv1 /kapil/                                                ========> mount with created directory.
+df -f                                                                      ========> you can find there mounted directory(kapil) with mounted file(/dev/myvg/lv1)
+cd kapil
+cp -rvf /etc/* .                                                           ========> data stored in "kapil" directory.
+unmount /dev/myvg/lv1                                                      ========> unmount 
+lvremove /dev/myvg/lv1                                                     ========> remove logical volume
+cd /etc/lvm/archive | ll                                                   ========> Record available for all activity
+vgcfgrestore -f /etc/lvm/archive/myvg 0001.4625337.vg  myvg                ========> Restore lvm (take removel activity ID)
+
+NOTE: Before mount again deactivate then mount.
+
+lvchange -an /dev/myvg/lv1                                                =========> deactivate logical volume
+lvchange -ay /dev/myvg/lv1                                                =========> activate logical volume
+mount /dev/myvg/lv1 /kapil/                                               ========> mount with created directory.
+
+
+NOTE:(df -f then cd kapil then ls all data you can see here) 
+
+
+                                            EXTEND & REMOVE VOLUME IN VOLUME GROUP,LOGICAL VOLUME
+                                            
+                                            
+lvextend -L +2G /dev/myvg/lv1                                             =========> more 2GB added in that volume
+vgextend myvg /dev/sdc                                                    =========> new hard disc(sdc) added in same volume group (myvg)
+vgextend myvg /dev/sdb3/ /dev/sdb4/                                        ========> extend physical volume.
+lvremove /dev/myvg/mylv1                                                  =========> remove logical volume ("mylv1")
+vgremove myvg                                                             =========> remove volume group("myvg)
+
+
+
+                                                FOR EXCHANGE OLD HARD DRIVE TO NEW HARD DRIVE
+                                                
+                                                                                    
+                                               
+NOTE: when you will used move method you can observed there will be down time, so better option is mirroring method.  
+      when you try this way, it may be down time at the time of move data.
+
+
+pvmove /dev/sdb/ /dev/sdc/                                                =========> move data from physical volume of hard drive old "/dev/sdb"  to new hard drive "/dev/sdc".
+vgreduce myvg /dev/sdb/                                                   =========> remove physical volume of old hard drive "/dev/sdb/" from volume group.
+lvs -o+devices /dev/myvg/lv1                                              =========> to check this "lv1" connected to which disc.
+lvconvert -m 1 /dev/myvg/lv1 /dev/sdc                                     =========> mirroring "/dev/myvg/lv1" with "/dev/sdc"
+lvconvert -m 0 /dev/myvg/lv1 /dev/sdb   (then vgreduce myvg /dev/sdb/)    =========> mirroring remove old physical volume
+
+
+echo "- - -" > /system/class/scsi_host/host1/scan    OR                   =========> no need to reboot just refresh after that it will not detect then replace host1 to host2,host3 & host4.
+echo "- - -" > /system/class/fc_host/host*                                =========> channel, SCSI target ID, and LUN
+
+    
+echo "1" > /sys/block/sdb/device/delete                                   =========> remove disc from physical server.
+
+
+
+ATTACH NEW HARD DISC: Glo to setting ==> click on add ==> sesect hard drive ==> select SCSI  ==> select on create new virtual disc ==> select size & secect slit virtual disc in to multiple files ==> select machine 2-51 ==> click on finish and click on ok.
+                           
+                                                  
+                                                  
+                                                        VDO (Virtual Data Optimizer)
+                                                        
+
+DUPLICATION:- In this concept if you save data in other location number of times it will consume the space only one time.
+
+COMPRESSION:- In this concept you can compress data from GB into KB.
+
+VDO:- concept we will used on lv(lv1)
+                                                        
+                                                        
+                                                        CREATE VDO
+yum install vdo kmod-vdo                                                  ==========> install packege
+1) lvcreate -l 100%VG -n lv1 vg1                                          ==========> create lv 100%VG
+2) vdo create --name=vdo1 --device=/dev/vg1/lv1 --vdoLogicalSize=100G     ==========> create vdo on lv1
+3) mkfs.xfs /dev/mapper/vdo1                                              ==========> format vdo1
+4) mkdir /root/kapildeo 
+5) mount /dev/mapper/vdo1 /root/kapildepo
+6) vdostatas --hu
+7) df --hu
+ 
+                                                        
+                                                        
+                                                        GROW LOGICAL VDO
+
+1) vdo growLogical --name=vdo1 --vdoLogicalSize=200G                      ==========> increase logical size on customer end.
+2) xfs_growfs /dev/mapper/vdo1                                            ==========> formate after increse logical space.
+
+
+
+                                                        GROW PHYSICAL VDO
+                                                        
+                                                        
+
+1) lvextend -l 100%VG /dev/vg1/lv1                                        ==========> extend lv space
+2) vdo growPhysical --name=vdo1                                           ==========> increase physical size.
+3) mount /dev/mapper/vdo1 /root/kapildepo                                 ==========> after increase physical size of VDO1
+
+
+vdo deactivate --name=vdo1                                             ==========> deactivate vdo1
+vdo activate --name=vdo1                                               ==========> activate vdo1
+vdo desableComepression --name=vdo1                                    ==========> comepression deactivate in vdo1 
+vdo enableComepression --name=vdo1                                     ==========> comepression activate in vdo1 
+vdo desableDuplicatition --name=vdo1                                   ==========> Duplicatition deactivate in vdo1 
+vdo enableDuplicatition --name=vdo1                                    ==========> Duplicatition activate in vdo1
+vdo stop --name=vdo1                                                   ==========> stop vdo1
+vdo start --name=vdo1                                                  ==========> start vdo1
+vdo remove --name=vdo1                                                 ==========> remove vdo1
+vdo list
+
+NOTE- using cockpit service we can manage our work on dashboard. 
+ 
+
+
+                                                     REBOOT
+                                                     
+                                                     
+                                                     
+systemctl reboot                                                         =========> smoothly reboot
+reboot                                                                   =========> smoothly reboot
+init 6                                                                   =========> forcefully reboot
+shutdown -r 5:30                                                         =========> reboot at 5:30 'o'clock(time consider according to 24 hr)
+shutdown -r +5                                                           =========> reboot after 5 minutes.
+shutdown -r now                                                          =========> reboot now.                                              
+shutdown -c                                                              =========> reboot cancel.
+date -s "Monday 26 December 2022 10:51:16 AM IST"                        =========> we can change date &time.
+
+initramfs.rescue                                                         =========> when kernel boot he will pick up the driver & module from this file and load in to RAM.
+                                                                                    (when kernel select rescue)
+initramfs.                                                               =========> when kernel boot he will pick up the driver & module from this file and load in to RAM.
+                                                                                    (when kernel select simple) we can face "kernel panic" error due to not pick up driver & module from this file.
+dracut -v -f /boot/initramfs-(copy version from linux).img  (copy version from linux)        ========> recover "initramfs".
+                                                or
+mkinitrd -force initramfs-(copy version from linux).img  (copy version from linux)           ========> recover "initramfs".
+dracut -v -f /boot/initramfs-(copy version from rescue linux).img  (copy version from linux) ========> recover "initramfs-0-rescue".
+
+
+
+                                                   SHUTDOWN  
+                                                    
+                                                    
+systemctl poweroff                                                       =========> smoothly shutdown.
+poweroff                                                                 =========> smoothly shutdown.
+init 0                                                                   =========> forcefully shutdown.
+shutdown -h 5:30                                                         =========> shutdown at 5:30 'o'clock(time consider according to 24 hr)
+shutdown -h +5                                                           =========> shutdown after 5 minutes.
+shutdown -h now                                                          =========> shutdown now.                                              
+shutdown -c                                                              =========> shutdown cancel.
+                              
+                                                     
+                                                  AT & CRONTAB                                         
+                                                     
+                                                     
+ at:- we will use this command to execute a one time job on sheduld time.
+ 
+ at now                                                                  ========> it will execute immediatly
+ at 12:30 PM
+ at now +5 minutes/hours/days/months/yrea
+ 
+ atq  or at -l                                                           ========> to check shedule list
+ at -c                                                                   ========> will discribe shedule job.
+ l
+ crontab:- we will use this command to execute a job on sheduld time continuouslly.                                                  
+ 
+ crontab -e                                                              ========> you will enter in vi file.                                                    
+                                                     
+ grep 'grpup-name-here' /etc/group                                       ========> you can see the user list who is add in that perticular group.                                                    
+                                                     
+                                                     
+ ps -ef                                                                  ========> you can check the processe is running.
+ 
+ 1
+ rpm -qa | grep atd                                                      ==========> check packages, if packege not available then follow below steps.
+install ==> systemctl start atd ===> systemctl enable atd 
+cat /etc/crontab                                                        ==========> check syntax.                                                 
+at:- we will use this command to execute a one time job on sheduld time.
+ 
+at 12:30 PM                                                             =========> one time job running.
+ 
+crontab:- we will use this command to execute a job on sheduld time continuouslly.                                                  
+ 
+crontab -e                                                              ========> you will enter in vi file.
+crontab -u (username) -e                                                   
+crontab -l                                                              ========> check crontab job list.
+crontab -u (username) -l
+crontab -r (job number)                                                 ========> delete crontab job list.
+MIN	HOUR	DATE	MONTH	DAY	COMMAND
+*/5	*	*	*	*	rm -rf data                      =========> after every 5 minutes
+*/5	*/2	*	*	*	rm -rf data                      =========> after every 2 hr after 5 minutes
+
+
+   example-    #MIN	HOUR	DATE	MONTH	DAY	COMMAND
+                58	20	*	*	*	rm -rf data
+                58	20	*	*	*	mkdir kapil2
+                58	20	*	*	*	cp kapil kapil2
+                58      20      *	*	*	sh /home/kapildeopatil/kapil.sh  (for run script)
+                                                     
+cd /etc                                                                ===========> In this directory there is a default folder you can put your script according to that & chmod +X script file 
+cron.daily, cron.hourly, cron.weekly & cron.monthly                                                                                                 
+                                          
+cron.d                                                                 ===========> inside that folder there is 0hourly file enter in this file and sheduld your script 
+                                                                                    (01 * * * *	root run-parts (folder location where your script is located)                        
+cron.deny                                                              ===========> in this file you mention username will not allow to create job sheduler.
+cron.allow                                                             ===========> in this file you mention username will allow to create job sheduler.     
+                         
+                                    
+                                                PERMISSION                                                    
+                                                     
+drwxr-xr-x.                                               ========> last dot indicate ACL permission.                                                   
+d rwx r-x r-x                                             ========> default permission of directory if root user will create
+- rw- r-- r--                                             ========> default permission of file if root user will create                                                                  
+d rwx rwx r-x                                             ========> default permission of directory if normale user will create
+- rw- rw- r--                                             ========> default permission of file if normale user will create                                                                  
+
+ 
+                                              FIND COMMAND
+                                              
+                                              
+ du -sh (file-path)                                                      ========> you can check the size of that file.
+find (file-path) argument(-name/-size/-perm) file-name/file-size         ========> you can search the file-size/file-name/kind-of-permition.
+find . -perm 750 -type d                                                 ========> you can search the directory of this kind-permition
+find (file-path) argument(-redable/-write/-execut/-empty)                ========> no need to mentition anything after argument.
+find . -perm /u=s                                                        ========> for advance permition guid/uid.
+find . -perm /a=(r/w/x) -type (d/f)                                      ========> x=executable, .=current directory, r=read, w=write, d=directory & f=file.
+find /(file-path) -type d -exec cp -rvf {} /kapildeo/docker/ \;          ========> when you have find and copy data. 
+find /(file-path) -type d -exec rm -rvf {} \;                            ========> when you have find and remove data. f=forcefully, r=remove & v=print operation.
+find /(file-path) -empty -type f                                                    
+find /(file-path) -perm 755 -type f                                                    
+find /(file-path) -perm 777 -name kapil -exec chmod 000 {} \;    
+find /(file-path) -mtime 10                                              ========> c=changes,m=modifed & a=access time,data show changes after 10days.                                             
+find /(file-path) -atime 10                                                    
+find /(file-path) -ctime 10                                                     
+                                                     
+                                                     
+                                                     
+                                                     	AWK,SED,CUT,FIND,ECHO,HISTORY,USER MANAGEMENT,GROUP MANAGEMENT,UMASK,ACL,
+                                                     
+                                                     
+getfacl /home/kpatil/script.sh | setfacl --set-file=- /home/kpatil/Downloade/   =====> acl of script file is apply to Downloade folder                                                    
+setfacl -Rm u:kapildeo:rwx /home/kpatil/Downloade/  
+setfacl -dm u:kapildeo:rwx /home/kpatil/Downloade/                        ========> default is not applicable for file.
+setfacl -b /home/kpatil/Downloade/                                                    
+setfacl -b /home/kpatil/Downloade/*                                                     
+                                                     
+                                                     
+                                                     
+                                                       FIREWALL 
+                                                       
+ firewall-cmd --add-interface=enp03 --permenant --zone=home           ==========> ethernet(enp03) interfacing with zone(home) 
+ firewall-cmd --remove-interface=enp03 --permenant --zone=home        ==========> ethernet(enp03) remove from zone(home)
+ firewall-cmd --add-port=1111/tcp --permenant                         ==========> add costom port in firewall zone.
+ firewall-cmd --permenant --new-zone=kapildeo                         ==========> add new zone name
+ firewall-cmd --permenant --delete-zone=kapildeo                      ==========> delete zone name
+ 
+ 
+ 5.7.1. Listing Zones
+ firewall-cmd --get-zones                                                       
+ firewall-cmd --list-all-zones                                                    
+ firewall-cmd --zone=zone-name --list-all                                                    
+                                                     
+ 5.7.2. Modifying firewalld Settings for a Certain Zone
+~]# firewall-cmd --add-service=ssh --zone=public                                                    
+                                                     
+ 5.7.3. Changing the Default Zone
+ firewall-cmd --get-default-zone                                                    
+ firewall-cmd --set-default-zone zone-name                                                    
+                                                     
+ 5.7.4. Assigning a Network Interface to a Zone
+ ~]# firewall-cmd --get-active-zones
+ ~]# firewall-cmd --zone=zone-name --change-interface=<interface-name>
+                                                     
+ 5.7.5. Assigning a Default Zone to a Network Connection
+ /etc/sysconfig/network-scripts/ifcfg-connection-name
+ ZONE=zone-name
+ 
+ 
+ 
+ 5.7.6. Creating a New Zone
+
+~]# firewall-cmd --permanent --new-zone=zone-name
+~]# firewall-cmd --reload
+~]# firewall-cmd --get-zones
+~]# firewall-cmd --runtime-to-permanent
+
+ 
+5.7.8. Using Zone Targets to Set Default Behavior for Incoming Traffic
+~]$ firewall-cmd --zone=zone-name --list-all
+~]# firewall-cmd --zone=zone-name --set-target=<default|ACCEPT|REJECT|DROP> 
+ 
+ 
+ 
+5.8. SELinux Point
+
+
+/etc/selinux/config                                                      
+   
+   SELINUX=enforcing
+   setenforce 1
+   
+   SELINUX=disabled
+   setenforce 0
+
+
+5.9. FIREWALLD
+  
+   systemctl disable firewalld
+   systemctl stop firewalld
+   systemctl reload firewalld
+   
+
+ 
+                                                                 NMCLI & NMTUI LINUX NETWORK COMMAND
+                                                                                                  
+                                                                                                                
+                                                     
+                                          nmtui 
+
+fidown (connection name)                                            =========> conection down
+fiup (connection name)                                              ========> connection up
+                                     
+                                         nmcli
+                                                                                                 
+nmcli connection up/down enp03                                                  
+nmcli connection show                                                =========> list all connection name
+nmcli connection show enp03                                          =========> details of enp03 connection                       
+nmcli connection add conn-name mumbai type ethernet ifname ens03 autoconnect yes ipv4.addresses 10.0.2.16/24  ===> add new ethernet connectition with new ip,gateway etc.
+nmcli connection modify enp03 ipv4.addresses 10.0.2.22/24            =========> add new ip address in old ethernet
+ 
+ 
+                                                              
+                                                               COMPRESS COMMAND
+                                                               
+                                                               
+gunzip,bunzip,xz,zip,unzip                                          =========> compress data command.
+(z)     (j)  (J)
+tar -czvf kapil.tar source-path                                     =========> compress syntax
+du -sh file-name                                                    =========> check file size
+tar -xvf kapil.tar                                                  =========> extract/decompress in same location
+tar -xvf kapil.tar -C /destination path                             =========> extract/decompress in other location
+tar -tvf kapil.tar                                                  =========> list all data fron tar directory.
+zip kapil /source-file-path                                         =========> compress syntax for file.
+zip -r kapil /source-directory                                      =========> compress syntax for directory.
+unzip kapil.zip                                                     =========> decompress syntax
+ 
+ 
+                                                               SSH
+ 
+ 
+ ssh root@10.0.2.22                                                ==========> for remote access.                                                              
+/etc/ssh/sshd_config                                               ==========> enter in this file and perform below operation
+
+PermitRootLogin yes/no                                             ==========> set root login allow/block
+AllowUsers kapil                                                   ===========> by using "kapil" user account credentioal we can access  ssh (which is added in server sshd_config file)
+DenyUsers kapil                                                    ===========> except this one all can access the ssh.
+                                                                              = if allow/deny more than one ( kapil new, ....so on )
+
+
+PubKeyAuthonticatition yes                                         ===========> enable pubkey login service
+PubKeyAuthonticatition no                                          ===========> disable pubkey login service
+PasswordAuthonticatition yes                                       ===========> enable password login service
+PasswordAuthonticatition no                                        ===========> disable password login service
+ 
+port 2222                                                          ===========> add custom port in the file
+systemctl reload sshd
+
+netstat -tulnp |grep 22                                            ===========> check custum port number of ssh
+ssh-keygen -t rsa                                                  ===========> we have to fire this command in particular user home account. It create pem file "authorized_keys" and copy public key.
+ 
+from="ip",                                                         ===========> in front of pub key( it will allow 
+ 
+ 
+ 
+                                                         (RPM/YUM/DNF) & (APT-GET) & wget
+ 
+ 
+rpm -qa  or yum list all                                           ==========> list all packeges.
+rpm -i or yum install httpd                                         ==========> for install packeges.
+rpm -u or yum remove httpd                                         ==========> for remove packeges.
+wc -l                                                              ==========> count
+grep (name-of-packege)                                             ==========> find perticular                    
+rpm -i/U/e/h                                                       ==========> i=install, e=erase, U=upgrade, h=human redable
+createrepo --database /BaseOS                                      ==========> creating "repodata" in side BaseOS directory, we need to create repodata folder where the packges is available. 
+"rm -rf repodata"  then "createrepo --database /BaseOS"            ==========> update "metadata" in "repodata"
+yum search all "dns server"                                        ==========> if dont know about package name for dns server you can check in this way.
+yum history                                                        ==========> check yum history
+yum history info 5                                                 =========> 5-what command we fire (in place of "info" we can use undo/redo according to operation) 
+vi /var/log/dnf.log
+vi /etc/rsyslog.conf
+vi /var/log/secure                                                 =========> seurity related log.
+wget link-address                                                  =========> by using this command download file through internet in linux.
+which httpd                                                        =========> command use to show path of package.
+
+
+
+                                                        	SWAP PARTITION CREATE BY HD PARTITION METHOD & FILE METHOD 
+                                                        	
+                                                        	
+add one hard disk 
+fdisk  /dev/sdb                                                     ==========> Enter inside the disk
+then create partition by presing n button  3 permanent + 1 extended = total 4 we can create  
+change hexa code by presing "t" & enter partition number  then "82" hex code for swap creation.
+partprobe /dev/sdb
+mkswap /dev/sdb2                                                    ==========> we are selected sdb2 for swap partition.
+swapon /dev/sdb2                                                    ==========> we are selected sdb2 for swap partition.
+swapon -s                                                           ==========> we can check swap partition status.                                                  	
+vi /etc/fstab   (/dev/sdb2   swap   sawp   defaults  0 0)           ==========> for permanent use enter in this file.
+swapoff /dev/sdb2
+
+ 
+ 
+fallocate -l 1G /swapfile
+mkswap /swapfile
+chmod 0600 /swapfile
+swapon /swapfile
+vi /etc/fstab   (/dev/sdb2   swap   sawp   defaults  0 0)           ==========> for permanent use enter in this file.
+
+
+For Removce swap 1) vi /etc/fstab  - remove from here
+                 2) swapoff /swapfile - make off
+                 3) fdisk  /dev/sdb  - remove from here
+
+
+
+                                                     BREAK ROOT PASSWORD
+                                                     
+                                                     
+press E enter in kernel
+                                                    
+Add at the end of kernel line = rd.break
+
+Now hit "Ctrl-x" to run the edited bootloader script.
+
+You’ll boot to a 'rescue' prompt that looks like this: switch_root:/#.
+
+Enter the following: mount -o remount,rw /sysroot/
+
+Now type & enter= chroot /sysroot/
+
+Now you can simply change the password for root using the "passwd" command.
+
+Next,At the prompt ,enter: touch /.autorelabel.
+
+Type exit to leave the chroot environment & again exit.
+
+
+
+
+                                                   SET GRUB FILE PASSWORD
+
+
+cd /boot/grub2/                                                  ===========> for set password
+grub2-setpassword
+verify user.cfg is create or not
+grub2-mkconfig -o /boot/grub2/grub.cfg
+reboot
+rm -f  user.cfg                                                   ===========> for remove password
+                                        
+                                        
+                                        
+                                                 GRUB.CFG FILE RECOVERY
+                                                 
+                                                 
+1).Go to setting set .iso file from CD/DVD RO PEN DRIVE
+2).make power off then power on.
+3).select troubleshooting
+4).select Rescue mode
+5).select 1 for continue then press enter
+6).Again Press Enter to get shell.
+7).chroot /mnt/sysroot/                                      ===========> there is line "your system is mounted under '/mnt/sysroot/' thats we took this path"
+8).grub2-mkconfig -o /boot/grub2/grub.cfg                    ===========> "grub.cfg" file is corrupted.
+9).exit again exit
+10).Go to setting remove .iso file from CD/DVD RO PEN DRIVE  ===========> otherwise it will boot from iso file.                                   
+
+
+                                               
+                                                KERNEL FILE RECOVERY
+                                                
+                                                
+login through rescue                                         ==========> when rescue kernel available
+enter in to BaseOS/Packages file 
+rpm -ivh kernel-core --force
+
+                                                             ==========> when both kernel are deleted or currupted recover through troubleshooting.
+cd /mnt/install/repo/BaseOs/Packeges                      
+rpm -ivh --root=/mnt/sysimage/ --replacepkgs kernel-core --force ======> some times "replacepkgs" not work.
+rpm -ivh --root=/mnt/sysimage/ kernel-core --force                                             
+                                                
+
+vi /etc/defaults/grub                                           =======> for change kernel grub time out.                                            
+grub2-mkconfig -o /boot/grub2/grub.cfg                                                  
+
+grub2-set-defaults 0/1/2                                        ======> set default kernel & value(0/1/2) depend on number of kernel available in the server.                                            
+                                                
+                                                                                               
+                                               
+                                                         COMMAND TO CHECK HARDWARE DETAILS
+                                   
+                                                         
+ cat /proc/cpuinfo
+ cat /proc/meminfo
+ dmidecode -t memory                                                         
+ free -m
+ free -t -m
+ vmstat
+ netstat
+ 
+ 
+ ifconfig 
+ hostname -i
+ ip address/ip a
+ 
+ 
+ 
+                                                        SHORTCUT KEYS
+                                                        
+ctrl(left side) + R                                               ===========> search reverse command.                                                       
+ctrl + shift + r                                                  ===========> search reverse command.                                                       
+rsync -avh id_rsa root@10.0.2.21:/tmp                             ===========> sharing data [destinatition forder & Ip=10.0.2.21:/tmp   file=id_rsa]  
+w                                                                 ===========> show the list of login user on server.
+rsync -aHAXxSP /old-volume/ /new-volume/                          ===========> copy data from old volume to new volume. 
+ 
+sudo apt-get install putty-tools 
+sudo puttygen pemKey.pem -o ppkKey.ppk -O private 
+sudo puttygen ppkkey.ppk -O private-openssh -o pemkey.pem 
+ 
+ 
+scripting topic                                        
+                                                                            
+cat rootpassreset.txt | head -3 | tail -1 | awk '{print $1}'    =====>  combination of commands we use for scripting.
+ 
+ 
+ Automation backup
+ expire password 
+ 
+ 
+ 
+ 
+ 
+########################################  SPACE REFLECTION ON TERMINAL #############################################################################
+ 
+ 
+ [Use this command for Ext1,2,3 or xfs file system].
+ 
+ sudo growpart /dev/xvda 1            =======> xvda1 (we have to remove "1" from that name)
+ sudo xfs_growfs -d /
+ 
+
+ 
+[Ext4 file system] Use the resize2fs command.
+
+sudo resize2fs /dev/xvda 1      
+df -hT                ===========> check file type(ext1,2,3,4 or xfs)
+
+ 
