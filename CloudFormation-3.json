@@ -1,0 +1,122 @@
+{
+  "Resources": {
+    "MyVPC": {
+      "Type": "AWS::EC2::VPC",
+      "Properties": {
+        "CidrBlock": "10.10.0.0/16",
+        "EnableDnsSupport": "true",
+        "EnableDnsHostnames": "true",
+     "Tags": [
+          {
+            "Key": "Name",
+            "Value": "Test-VPC"
+          }
+        ]
+      }
+    },
+    "PublicSubnet": {
+      "Type": "AWS::EC2::Subnet",
+      "Properties": {
+        "VpcId": { "Ref": "MyVPC" },
+        "CidrBlock": "10.10.0.0/24",
+        "MapPublicIpOnLaunch": true,
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "Test-VPC"
+          }
+        ]
+    }
+  },
+  "RouteTable": {
+      "Type": "AWS::EC2::RouteTable",
+      "Properties": {
+        "VpcId": { "Ref": "MyVPC" },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "Test-Route-table"
+          }
+        ]
+    }
+  },
+    "MySecurityGroup": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "Allow SSH access",
+        "VpcId": { "Ref": "MyVPC" },
+        "SecurityGroupIngress": [
+          {
+            "IpProtocol": "tcp",
+            "FromPort": "22",
+            "ToPort": "22",
+            "CidrIp": "192.168.1.0/24"
+          },
+            {
+            "IpProtocol": "tcp",
+            "FromPort": "80",
+            "ToPort": "80",
+            "CidrIp": "192.168.1.0/24"
+          }
+        ],
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "CV-Test-SG"
+          },
+          {
+            "Key": "Test",
+            "Value": "Environment"
+          }
+        ]
+      }
+    },
+      "EC2Instance1": {
+      "Type": "AWS::EC2::Instance",
+      "Properties": {
+       "InstanceType": "t2.micro",
+        "ImageId": "ami-09298640a92b2d12c",
+        "SubnetId": { "Ref": "PublicSubnet" },
+        "SecurityGroupIds": [ { "Ref": "MySecurityGroup" } ],
+         "Tags": [
+          {
+            "Key": "Name",
+            "Value": "CV-Test-vm1"
+          }
+        ]
+
+      }
+    },
+     "EC2Instance2": {
+      "Type": "AWS::EC2::Instance",
+      "Properties": {
+       "InstanceType": "t2.micro",
+        "ImageId": "ami-09298640a92b2d12c",
+        "SubnetId": { "Ref": "PublicSubnet" },
+        "SecurityGroupIds": [ { "Ref": "MySecurityGroup" } ],
+         "Tags": [
+          {
+            "Key": "Name",
+            "Value": "CV-Test-vm2"
+          }
+        ]
+
+      }
+    },
+    "EC2Instance3": {
+      "Type": "AWS::EC2::Instance",
+      "Properties": {
+       "InstanceType": "t2.micro",
+        "ImageId": "ami-09298640a92b2d12c",
+        "SubnetId": { "Ref": "PublicSubnet" },
+        "SecurityGroupIds": [ { "Ref": "MySecurityGroup" } ],
+         "Tags": [
+          {
+            "Key": "Name",
+            "Value": "CV-Test-vm3"
+          }
+        ]
+      }
+    }
+  }
+}
