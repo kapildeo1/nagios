@@ -1,0 +1,21 @@
+version: "3"
+services:
+        rpn-web:
+                image: httpd
+                ports:
+                        - "8000:80"
+                networks:
+                        - "rpn-network"
+                volumes:
+                        - "rpn-volume:/data1"
+        rpn-db:
+                image: redis
+                networks:
+                        - "rpn-network"
+                volumes:
+                        - "rpn-volume:/data2"
+networks: 
+        rpn-network:
+volumes:
+        rpn-volume:
+                  

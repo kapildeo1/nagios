@@ -1,0 +1,6 @@
+FROM ubuntu
+MAINTAINER kapildeo 
+#VOLUME ["/myvolume"]
+#RUN echo "hi kapildeo patil" > /var/mahesh.txt
+#ENTRYPOINT ["tail","-f" ,"/dev/null"]
+

@@ -1,0 +1,88 @@
+
+                                                         DOCKER
+
+
+docker run command = docker create + docker start command
+
+sudo docker run -d -p 1111:80 --name kon ka:kk                    =====> port mapping which is mention in Dockerfile for universal access & asign name to container.
+
+sudo docker image tag ubuntu:latest patilkapildeo/myfirstimg:new  =====> changing the image name and tag when you have to push image
+
+sudo docker build -t ka:kk .                                      =====> give name and tag at the time of build image
+
+sudo docker pull patilkapildeo/myimage1:kapil                     =====> pulling image from docker hub(some times check tag)
+
+sudo docker push patilkapildeo/myimage1:kapil                     =====> pushing image to docker hub.
+
+sudo docker rmi $(sudo docker images -q)                          =====> delete all images & container in single command
+sudo docker rm $(sudo docker ps -aq)
+sudo docker stop $(sudo docker ps -aq)                            =====> start & stop all container
+sudo docker start $(sudo docker ps -aq)
+
+sudo docker run -it --name volcont2 -v /home/10354@creditvidya.local:/paython1 --privileged=true volimg2 /bin/bash     =====>     container to host
+
+sudo docker run -it --name container2 --privileged=true --volumes-from container1 container2img /bin/bash              =====>     container to container 
+
+sudo docker diff pycont                                          ======> check difference
+
+sudo docker commit pycont pyimg                                  ======> container to image create
+
+sudo docker container exec -it dockercomposefile_rpn-web_1 bash  ======> when container already in runnning state.
+
+sudo docker attach ( container name )                            ======> when container not in runnning state( after start container)
+sudo docker start ( container name )
+
+ENTRYPOINT ["tail","-f" ,"/dev/null"]                            ======> when container run for short time so we don't get chance to enter in to the container, we need to run container for null 
+                                                                         time so we have to use this command.the container will remain idle, which makes it easier to connect to it later (docker exec -
+                                                                         it container_name bash).
+
+
+                                           DOCKER SWARM COMMAND
+
+docker swarm init                                               ========> create manager node
+docker node ls                                                  ========> list all node
+docker node promote (node ID)                                    
+docker node demote (node ID)
+docker node rm (node ID) --force
+docker node rm (node ID)                                                                                                                                                        
+docker node inspect (node ID)                                    
+docker swarm leave                                               ========> for worker node remove
+sudo docker swarm leave --force                                  ========> for maneger node remove
+docker info                                                      ========> details about docker
+docker node join-token worker                                    ========> 
+docker node join-token manager
+docker service create --name web-nginx --replicas 10 nginx
+
+
+
+                                           DOCKER COMPOSE COMMAND
+                                   
+                                   
+docker-compose up -d                                             =======> start all container
+docker-compose up -d --scale rpn-db=5                            =======> increse container number as per required.
+docker-compose down                                              =======> stop all container
+docker-compose config                                            =======> check before run compose file                             
+                          
+                          
+                          
+                                          DOCKER NETWORK COMMAND
+                                          
+                                          
+sudo docker network inspect bridge                               ======> check container IP details.
+sudo docker network inspect host
+sudo docker network inspect none                                   
+docker network ==> one container connect to other through IP address ( ping "172.19.0.2")  =====>                                         
+
+
+
+sudo docker container exec -it puttygen bash
+sudo puttygen pemKey.pem -o ppkKey.ppk -O private (pem to ppk)
+sudo puttygen ppkkey.ppk -O private-openssh -o pemkey.pem (ppk to pem)
+
+
+                                         GITHUB & BITBUCKET
+
+
+GitHub is a code hosting platform for version control and collaboration, you can revert back easy if you face any issue in new code. 
+It is universol access for you & others work together on same projects from anywhere.
+This tutorial teaches you GitHub essentials like repositories, branches, commits, and pull requests.
