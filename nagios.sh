@@ -34,6 +34,6 @@ systemctl enable httpd
 systemctl restart nagios
 systemctl start firewalld.service
 
-#firewall-cmd --permanent --zone=public --add-service=http
-#firewall-cmd --permanent --zone=public --add-service=https
-#firewall-cmd --reload
+firewall-cmd --permanent --zone=public --add-service=http
+firewall-cmd --permanent --zone=public --add-service=https
+firewall-cmd --reload

@@ -1,0 +1,70 @@
+################# Activet bridged traffic.
+
+
+cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
+br_netfilter
+EOF
+cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+EOF
+sudo sysctl --system
+
+
+
+############### Download kubectl packege
+
+wget "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+wget "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check   
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+#kubectl: OK
+
+
+############### Download minikube packege
+
+wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+
+
+
+
+
+############# Add the Kubernetes yum repository
+
+cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://pkgs.k8s.io/core:/stable:/v1.29/rpm/
+enabled=1
+gpgcheck=1
+gpgkey=https://pkgs.k8s.io/core:/stable:/v1.29/rpm/repodata/repomd.xml.key
+EOF
+
+
+
+############ add  docker user in the groop
+sudo usermod -aG docker $USER && newgrp docker
+
+
+kubeadm init      # multi_node cluster
+minikube start    # single_node cluster
+minikube stop
+minikube delete
+minikube status
+kubectl get cs
+minikube ip
+minikube ssh
+kubectl get nodes -o wide
+kubectl get pods
+kubectl run web-server --image=nginx
+
+
+
+
+
+docker ======> creating the container
+kubeadm =====> set up cluster
+kubelet =====> managing the component of cluster
+kubectl =====> all command start from kubectl.
+
