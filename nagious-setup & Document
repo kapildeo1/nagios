@@ -8,9 +8,6 @@
 # for adding new user 
 # htpasswd /user/local/nagios/etc/htpasswd.   username
 # then add access in cgi.conf file
-# then restart
-
-
 
 
 define contact {
@@ -22,33 +19,3 @@ define contact {
     host_notification_commands     notify-host-by-email
     email                          kapildeopatil@gmail.com
 }
-
-
-
-Grafana Document           =============================>      https://www.radishlogic.com/aws/ec2/how-to-install-grafana-on-ec2-amazon-linux-2/
-Nagios Document            =============================>      https://www.tecmint.com/install-nagios-in-linux/
-Grafana Document           ====================>      https://www.radishlogic.com/aws/ec2/how-to-install-grafana-on-ec2-amazon-linux-2/
-                                                      https://grafana.com/docs/grafana/latest/setup-grafana/installation/debian/
-docker command             ====================>      https://docs.docker.com/engine/reference/commandline/cp/
-Nagios Document            ====================>      https://www.tecmint.com/install-nagios-in-linux/
-report                     ====================>      https://docs.google.com/spreadsheets/d/1UUBq932iPJ3f71-4vrQ4w_59UBeSO6CJRdtnzsLttd8/edit#gid=0
-
-
-why it is not changing the "chmod 666 /usr/local/nagios/var/rw/nagios.cmd" ?
-why dtalari not able to read the nagios dashboard?
-can we set update rate time 30 sec ?
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
