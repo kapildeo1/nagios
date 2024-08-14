@@ -1,0 +1,32 @@
+echo "# nagios" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/kapildeo1/nagios.git
+git push -u origin main
+
+
+echo "# nagios" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/kapildeo1/nagios.git
+git push -u origin main
+echo "# nagios" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/kapildeo1/nagios.git
+git push -u origin main
+git status
+git add file1                                                         ====> first add this changes
+git commit -m "my first commit file1"                                 ====> then save/commit this changes
+git remote add origin https://github.com/kapildeo1/practicerepo.git   ====> only first time
+git push -u origin master                                             ====> then push this changes to cental repo
+git log                                                               ====> check who did this changes
+git show "commit id"                                                  ====> check what changes did.
+git pull origin master                                                ====> pull code from central repo.
+
