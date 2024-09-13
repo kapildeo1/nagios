@@ -1,5 +1,5 @@
 #!/bin/bash
-wget https://dl.grafana.com/enterprise/release/grafana-enterprise-8.2.3.linux-amd64.tar.gz
+wget https://dl.grafana.com/enterprise/release/grafana-enterprise-11.2.0.linux-amd64.tar.gz
 tar -zxvf grafana-enterprise-8.2.3.linux-amd64.tar.gz
 
 wget gpg.key https://rpm.grafana.com/gpg.key | sudo rpm --import gpg.key
@@ -13,11 +13,11 @@ gpgcheck=1
 gpgkey=https://rpm.grafana.com/gpg.key
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt" > /etc/yum.repos.d/grafana.repo
+# manual task
+# cd grafana-enterprise-11.2.0
+# ./bin/grafana-server --config=conf/defaults.ini --homepath=$(pwd) --packaging=enterprise &
 
-cd grafana-enterprise-8.2.3
-./bin/grafana-server --config=conf/defaults.ini --homepath=$(pwd) --packaging=enterprise &
-
-sudo yum install grafana 
-sudo systemctl start grafana-server.service 
-sudo systemctl enable grafana-server.service 
-systemctl restart grafana-server.service
+# sudo yum install grafana 
+# sudo systemctl start grafana-server.service 
+# sudo systemctl enable grafana-server.service 
+# systemctl restart grafana-server.service
