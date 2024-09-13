@@ -15,7 +15,6 @@ sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt" > /etc/yum.repos.d/grafana.repo
 
 sudo yum install grafana 
-sudo yum install grafana-enterprise 
 sudo systemctl start grafana-server.service 
 sudo systemctl enable grafana-server.service 
 systemctl restart grafana-server.service
