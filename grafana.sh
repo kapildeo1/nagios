@@ -14,8 +14,8 @@ gpgkey=https://rpm.grafana.com/gpg.key
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt" > /etc/yum.repos.d/grafana.repo
 # manual task
-# cd grafana-enterprise-11.2.0
-# ./bin/grafana-server --config=conf/defaults.ini --homepath=$(pwd) --packaging=enterprise &
+cd grafana*
+./bin/grafana-server --config=conf/defaults.ini --homepath=$(pwd) --packaging=enterprise &
 
 # sudo yum install grafana 
 # sudo systemctl start grafana-server.service 
