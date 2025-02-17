@@ -48,4 +48,5 @@ define service {
 
 
 
-add the pathe in main nagios.cnf file
+##### add the pathe in main nagios.cnf file
+##### then verify /usr/local/nagios/etc/objects/jenkins.cfg v /usr/local/nagios/etc/nagios.cfg
