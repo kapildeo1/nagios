@@ -1,5 +1,5 @@
 #!/bin/bash
-wget https://dl.grafana.com/enterprise/release/grafana-enterprise*linux-amd64.tar.gz
+wget https://dl.grafana.com/enterprise/release/grafana-enterprise-11.2.0.linux-amd64.tar.gz
 tar -zxvf grafana-enterprise*.tar.gz
 
 wget gpg.key https://rpm.grafana.com/gpg.key | sudo rpm --import gpg.key
