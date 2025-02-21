@@ -50,8 +50,7 @@ receivers:
         smarthost: "smtp.example.com:587"
         auth_username: "alert@example.com"
         auth_password: "yourpassword"
-        require_tls: true
-" >> /etc/prometheus/alertmanager.yml:
+        require_tls: true" > /etc/prometheus/alertmanager.yml:
 
 echo "[Unit]
 Description=Alertmanager
@@ -64,5 +63,4 @@ Type=simple
 ExecStart=/usr/local/bin/alertmanager --config.file=/etc/prometheus/alertmanager.yml --storage.path=/var/lib/alertmanager/
 
 [Install]
-WantedBy=multi-user.target
-" >> /etc/systemd/system/alertmanager.service
+WantedBy=multi-user.target" > /etc/systemd/system/alertmanager.service
