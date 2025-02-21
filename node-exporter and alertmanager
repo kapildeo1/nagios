@@ -32,6 +32,27 @@ wget https://github.com/prometheus/alertmanager/releases/download/v0.28.0/alertm
 tar -xvf alertmanager-linux-amd64.tar.gz
 sudo mv alertmanager-linux-amd64/alertmanager /usr/local/bin/
 sudo mv alertmanager-linux-amd64/amtool /usr/local/bin/
+
+echo "global:
+  resolve_timeout: 5m
+
+route:
+  receiver: "email-notifications"
+  group_wait: 10s
+  group_interval: 5m
+  repeat_interval: 3h
+
+receivers:
+  - name: "email-notifications"
+    email_configs:
+      - to: "admin@example.com"
+        from: "alertmanager@example.com"
+        smarthost: "smtp.example.com:587"
+        auth_username: "alert@example.com"
+        auth_password: "yourpassword"
+        require_tls: true
+" >> /etc/prometheus/alertmanager.yml:
+
 echo "[Unit]
 Description=Alertmanager
 After=network.target
