@@ -50,7 +50,7 @@ receivers:
         smarthost: "smtp.example.com:587"
         auth_username: "alert@example.com"
         auth_password: "yourpassword"
-        require_tls: true" > /etc/prometheus/alertmanager.yml:
+        require_tls: true" > /etc/prometheus/alertmanager.yml
 
 echo "[Unit]
 Description=Alertmanager
